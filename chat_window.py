@@ -20,7 +20,7 @@ class InputWidget(QWidget):
         self.edit_btn.clicked.connect(self.set_edit_text)
 
     def set_input_text(self, input_str):
-        self.input_label.setText(self, input_str)
+        self.input_label.setText(input_str)
 
     def set_edit_text(self):
         text = self.input_label.text()
@@ -82,15 +82,15 @@ class ChatWindow(QWidget):
         chat_list = self.chats_data.get("chat_list")
         for chat in chat_list:
             input_str = chat.get("input_str")
-            input_widget = InputWidget(chat_obj=self.chat_object)
+            input_widget = InputWidget(chat_obj=self.chat_obj)
             input_widget.set_input_text(input_str)
             self.main_verticalLayout.addWidget(input_widget)
 
             out_str = chat.get("out_str")
             out_widget = OutWidget()
-            out_widget.set_output_text(input_str)
+            out_widget.set_output_text(out_str)
             self.main_verticalLayout.addWidget(out_widget)
 
-        spacer_item = QSpacerItem(20, 300, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        spacer_item = QSpacerItem(20, 293, QSizePolicy.Minimum, QSizePolicy.Expanding)
         self.main_verticalLayout.addWidget(spacer_item)
         self.setLayout(self.main_verticalLayout)
